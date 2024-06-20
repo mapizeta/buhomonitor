@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buho Monitor</title>
+</head>
+<body>
+    <h1>Latest Logs</h1>
+    <pre id="log-output"></pre>
+    <script>
+        const logOutput = document.getElementById('log-output');
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/logs/');
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            logOutput.innerHTML += data.message + '\n';
+        };
+
+        socket.onclose = function(e) {
+            console.error('WebSocket closed unexpectedly');
+        };
+    </script>
+</body>
+</html>

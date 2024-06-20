@@ -1,0 +1,4 @@
+monitor/__pycache__/
+buhomonitor/__pycache__/
+monitor/migrations/
+db.sqlite3
